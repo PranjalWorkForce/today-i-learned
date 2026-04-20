@@ -1,0 +1,21 @@
+about REQUESTS Library python module 
+
+What it is?
+How it work?
+what it does?
+how can me usefully in cybersecurity?
+
+syntax
+import requests
+url = ("https://www.abc.com")
+print(requests.get)
+print(response.text)
+print(requests.status_code) //200 if ok
+
+
+also get other functions like
+Fetch security headers 
+get html css js content
+
+
+
