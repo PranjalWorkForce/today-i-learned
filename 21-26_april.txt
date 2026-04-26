@@ -1,0 +1,258 @@
+Get Method 
+Post Method 
+Cookies 
+Headers 
+json
+data
+
+real life codes 
+
+
+Python Requests Module – Notes (Beginner to Moderate)
+
+1. What is the Requests Module?
+
+The Requests module in Python is used to send HTTP requests to web servers and APIs.
+
+It allows you to:
+
+Get data from websites (GET request)
+
+Send data to servers (POST request)
+
+Work with APIs easily
+
+Handle headers, cookies, and sessions
+
+
+
+---
+
+2. GET Method (Fetch Data)
+
+GET is used to retrieve data from a server.
+
+Real-life Code:
+
+import requests
+
+url = "https://jsonplaceholder.typicode.com/posts/1"
+
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+response = requests.get(url, headers=headers)
+
+print(response.status_code)
+print(response.json())
+
+Use Case:
+
+Fetch user data
+
+Get API responses
+
+Load website content
+
+
+
+---
+
+3. POST Method (Send Data)
+
+POST is used to send data to a server.
+
+Real-life Code:
+
+import requests
+
+url = "https://httpbin.org/post"
+
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+data = {
+    "username": "puppy",
+    "password": "12345"
+}
+
+response = requests.post(url, headers=headers, json=data)
+
+print(response.json())
+
+Use Case:
+
+Login systems
+
+Form submissions
+
+API data upload
+
+
+
+---
+
+4. Headers
+
+Headers are extra information sent with request to act like a real browser.
+
+Real-life Code:
+
+headers = {
+    "User-Agent": "Mozilla/5.0",
+    "Accept": "application/json"
+}
+
+response = requests.get(url, headers=headers)
+
+Use Case:
+
+Avoid bot detection
+
+Authenticate requests
+
+Simulate browser behavior
+
+
+
+---
+
+5. Cookies
+
+Cookies store session data between requests.
+
+Real-life Code:
+
+import requests
+
+s = requests.Session()
+
+url = "https://httpbin.org/cookies"
+
+s.get("https://httpbin.org/cookies/set/user/puppy")
+
+response = s.get(url)
+
+print(response.text)
+
+Use Case:
+
+Login sessions
+
+Keeping user logged in
+
+Tracking session data
+
+
+
+---
+
+6. JSON vs Data
+
+JSON (Recommended for APIs)
+
+response = requests.post(url, json={"user": "puppy"})
+
+Data (Form style)
+
+response = requests.post(url, data={"user": "puppy"})
+
+Difference:
+
+json → API communication
+
+data → HTML form submission
+
+
+
+---
+
+7. Real Combined Example (GET + POST + Headers + Cookies)
+
+import requests
+
+s = requests.Session()
+
+headers = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+# Step 1: Set cookie
+s.get("https://httpbin.org/cookies/set/sessionid/12345", headers=headers)
+
+# Step 2: Check cookies
+cookie_response = s.get("https://httpbin.org/cookies", headers=headers)
+print("Cookies:", cookie_response.text)
+
+# Step 3: POST request
+url = "https://httpbin.org/post"
+
+data = {
+    "username": "puppy",
+    "password": "123"
+}
+
+response = s.post(url, headers=headers, json=data)
+print(response.json())
+
+
+---
+
+8. GitHub Upload (Single Shell Commands)
+
+Initialize repo
+
+git init
+
+Add file
+
+git add .
+
+Commit
+
+git commit -m "Requests module notes - GET POST Cookies Headers JSON"
+
+Add GitHub remote
+
+git remote add origin https://github.com/your-username/your-repo.git
+
+Push
+
+git branch -M main
+git push -u origin main
+
+
+---
+
+9. Key Summary
+
+GET → fetch data
+
+POST → send data
+
+Headers → act like browser
+
+Cookies → maintain session
+
+JSON → API data format
+
+data → form submission
+
+Done 👍
+
+Your notes now include:
+
+GET / POST
+
+Headers
+
+Cookies (Session handling)
+
+JSON vs data
+
+Real combined request example
+
+GitHub push shell commands
+
